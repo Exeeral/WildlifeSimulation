@@ -1,9 +1,9 @@
-﻿  Handler.cpp
-I:\Desktop\Things\Works\Wildlife Simulation Project\WildlifeSimulation\WildlifeSimulation\Animal.h(9,6): error C2143: błąd składniowy: brakuje „;” przed „*”
-I:\Desktop\Things\Works\Wildlife Simulation Project\WildlifeSimulation\WildlifeSimulation\Animal.h(9,6): error C4430: brak specyfikatora typu - założono, że int. Uwaga: C++ nie obsługuje domyślnie typu int
-I:\Desktop\Things\Works\Wildlife Simulation Project\WildlifeSimulation\WildlifeSimulation\Animal.h(9,21): error C2238: nieoczekiwany(e) token(y) poprzedzający(e) ";"
+﻿  Animal.cpp
+  Handler.cpp
+I:\Desktop\Things\Works\Wildlife Simulation Project\WildlifeSimulation\WildlifeSimulation\Handler.cpp(102,57): warning C4100: 'tile': unreferenced formal parameter
+  Herbivore.cpp
+  Predator.cpp
   Tile.cpp
-I:\Desktop\Things\Works\Wildlife Simulation Project\WildlifeSimulation\WildlifeSimulation\Animal.h(9,6): error C2143: błąd składniowy: brakuje „;” przed „*”
-I:\Desktop\Things\Works\Wildlife Simulation Project\WildlifeSimulation\WildlifeSimulation\Animal.h(9,6): error C4430: brak specyfikatora typu - założono, że int. Uwaga: C++ nie obsługuje domyślnie typu int
-I:\Desktop\Things\Works\Wildlife Simulation Project\WildlifeSimulation\WildlifeSimulation\Animal.h(9,21): error C2238: nieoczekiwany(e) token(y) poprzedzający(e) ";"
-  Generowanie kodu...
+  main.cpp
+  Generating Code...
+  WildlifeSimulation.vcxproj -> I:\Desktop\Things\Works\Wildlife Simulation Project\WildlifeSimulation\Debug\WildlifeSimulation.exe

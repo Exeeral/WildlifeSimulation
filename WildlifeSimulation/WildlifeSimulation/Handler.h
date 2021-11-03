@@ -11,12 +11,27 @@ private:
 
 	int m_worldWidth{};
 	int m_worldHeight{};
+	int m_maxAmountOfTurns{};
 	std::vector<Tile*> m_tiles{};
 
 
 public:
-	Handler(int worldWidth, int worldHeight);
+	Handler(int worldWidth, int worldHeight, int maxTurns);
+
+	void populateWorld(int herbivores, int predators);
+	void addAnimal(Animal* animal);
+
+	void printAllAnimalsInfo() const;
+	Tile* getTileByCoordinates(int x, int y) const;
+
+	void startSimulation();
+
+	//void animalStateReset();
+	void movementPhase();
+
+	void moveAnimalsFromTileToAdjacent(Tile* tile);
+
+
 };
-//animal with x, y
-//tiles
+
 #endif
