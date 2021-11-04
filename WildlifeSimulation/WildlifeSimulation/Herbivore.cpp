@@ -15,5 +15,3 @@ bool Herbivore::isPredator() const
 {
 	return false;
 }
-
-

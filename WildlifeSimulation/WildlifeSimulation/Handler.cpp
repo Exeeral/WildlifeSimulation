@@ -336,6 +336,3 @@ void Handler::moveAnimalsFromTileToAdjacent(Tile* tile)
 		functions::printNullptrError();
 	}
 }
-
-
-

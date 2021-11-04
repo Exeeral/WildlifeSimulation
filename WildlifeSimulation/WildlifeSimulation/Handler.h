@@ -32,8 +32,6 @@ public:
 	void breedingPhase();
 
 	void moveAnimalsFromTileToAdjacent(Tile* tile);
-
-
 };
 
 #endif
