@@ -1,9 +1,2 @@
-﻿  Animal.cpp
-  Handler.cpp
-I:\Desktop\Things\Works\Wildlife Simulation Project\WildlifeSimulation\WildlifeSimulation\Handler.cpp(102,57): warning C4100: 'tile': unreferenced formal parameter
-  Herbivore.cpp
-  Predator.cpp
-  Tile.cpp
-  main.cpp
-  Generating Code...
+﻿  Tile.cpp
   WildlifeSimulation.vcxproj -> I:\Desktop\Things\Works\Wildlife Simulation Project\WildlifeSimulation\Debug\WildlifeSimulation.exe

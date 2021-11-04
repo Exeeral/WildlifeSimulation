@@ -6,6 +6,11 @@ Herbivore::Herbivore(bool sex)
 	++totalAmountOfHerbivores;
 }
 
+Herbivore::~Herbivore()
+{
+	--totalAmountOfHerbivores;
+}
+
 bool Herbivore::isPredator() const
 {
 	return false;

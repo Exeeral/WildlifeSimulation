@@ -12,6 +12,7 @@ private:
 public:
 
 	Herbivore(bool sex);
+	~Herbivore() override;
 
 	bool isPredator() const override;
 	inline static int getTotalAmountOfHerbivores()

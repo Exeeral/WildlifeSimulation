@@ -26,8 +26,9 @@ public:
 
 	void startSimulation();
 
-	//void animalStateReset();
+	void animalStateReset();
 	void movementPhase();
+	void huntingPhase();
 
 	void moveAnimalsFromTileToAdjacent(Tile* tile);
 

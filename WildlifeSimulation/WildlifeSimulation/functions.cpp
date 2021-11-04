@@ -1,5 +1,6 @@
 #include <random>
 #include <ctime>
+#include <iostream>
 
 #include "functions.h"
 
@@ -10,4 +11,9 @@ int functions::generateRandomNumber(int min, int max)
 	std::uniform_int_distribution rng{ min, max };
 
 	return rng(seed);
+}
+
+void functions::printNullptrError()
+{
+	std::cout << "ERROR: Nullptr! How dare you?!\n";
 }

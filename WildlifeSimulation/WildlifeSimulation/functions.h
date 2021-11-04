@@ -4,6 +4,7 @@
 namespace functions
 {
 	int generateRandomNumber(int min, int max);
+	void printNullptrError();
 }
 
 #endif
