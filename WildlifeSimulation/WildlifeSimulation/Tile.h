@@ -45,6 +45,9 @@ public:
 	int getYCoordinate() const;
 	Animal* getAnimalOnIndex(int index) const;
 
+	int getAmountOfHerbivoreBreeds() const;
+	int getAmountOfPredatorBreeds() const;
+
 	friend std::ostream& operator<<(std::ostream& out, const Tile& tile);
 };
 

@@ -83,34 +83,58 @@ Tile* Handler::getTileByCoordinates(int x, int y) const
 
 void Handler::startSimulation()
 {
+	std::cout << "\t_--===INITIAL ENVIRONMENT===--_\n";
+	printAllAnimalsInfo();
+	std::cout << "\t_--===INITIAL ENVIRONMENT===--_\n";
+
+	std::cin.get();
+
 	for (int currentTurn{ 1 }; currentTurn <= m_maxAmountOfTurns; ++currentTurn)
 	{
-		printAllAnimalsInfo();
-		std::cin.get();
+		std::cout << "\tTURN: " << currentTurn << '\n';
 
-		std::cout << "TURN: " << currentTurn << '\n';
+		std::cout << "\tALL HERBIVORES: " << Herbivore::getTotalAmountOfHerbivores() << '\n';
+		std::cout << "\tALL PREDATORS: " << Predator::getTotalAmountOfPredators() << '\n';
 
-		std::cout << "ALL HERBIVORES: " << Herbivore::getTotalAmountOfHerbivores() << '\n';
-		std::cout << "ALL PREDATORS: " << Predator::getTotalAmountOfPredators() << '\n';
-
+		std::cout << "\n\t---Resetting all animals---\n";
 		animalStateReset();
+		std::cout << "\n\t---Movement Phase---\n";
 		movementPhase();
+		std::cout << "\n\t---Hunting Phase---\n";
 		huntingPhase();
-		//breedingPhase();
+		std::cout << "\n\t---Breeding Phase---\n";
+		breedingPhase();
 
 		if (Herbivore::getTotalAmountOfHerbivores() == 0)
 		{
-			std::cout << "All herbivores have died out!\n";
-			break;
+			std::cout << "\n\t------<THE END>------\n\n";
+			std::cout << "\tAll herbivores have died out!\n\n";
+			std::cout << "\t------<THE END>------\n";
+			return;
 		}
 		else if (Predator::getTotalAmountOfPredators() == 0)
 		{
-			std::cout << "All predators have died out!\n";
-			break;
+			std::cout << "\n\t------<THE END>------\n\n";
+			std::cout << "\tAll predators have died out!\n\n";
+			std::cout << "\t------<THE END>------\n";
+			return;
 		}
+
+		std::cout << "\n\t_--===TURN " << currentTurn << " END RESULTS===--_\n";
+		printAllAnimalsInfo();
+
+		std::cout << "\n\tALL HERBIVORES: " << Herbivore::getTotalAmountOfHerbivores() << '\n';
+		std::cout << "\n\tALL PREDATORS: " << Predator::getTotalAmountOfPredators() << '\n';
+
+		std::cout << "\t_--===TURN " << currentTurn << " END RESULTS===--_\n";
+
+		std::cin.get();
+
 	}
 
-	std::cout << "Max amount of turns reached!\n";
+	std::cout << "\n\t------<THE END>------\n\n";
+	std::cout << "\tMax amount of turns reached!\n\n";
+	std::cout << "\t------<THE END>------\n";
 }
 
 void Handler::animalStateReset()
@@ -141,9 +165,38 @@ void Handler::huntingPhase()
 	{
 		if (currentTile->getAmountOfPredatorsOnTile() > 0)
 		{
-			if (currentTile->getAmountOfHerbivoresOnTile() > 0)
+			currentTile->findPredatorAndEatHerbivore();
+		}
+	}
+}
+
+//TODO
+void Handler::breedingPhase()
+{
+	int amountOfBreeds{};
+
+	for (auto& currentTile : m_tiles)
+	{
+		if (currentTile->getAmountOfAnimalsOnTile() > 0)
+		{
+			amountOfBreeds = currentTile->getAmountOfHerbivoreBreeds();
+
+			while (amountOfBreeds != 0)
 			{
-				currentTile->findPredatorAndEatHerbivore();
+				std::cout << "Herbivores breeding at " << *currentTile << '\n';
+
+				addAnimal(new Herbivore{ static_cast<bool>(functions::generateRandomNumber(0, 1)) });
+				--amountOfBreeds;
+			}
+
+			amountOfBreeds = currentTile->getAmountOfPredatorBreeds();
+
+			while (amountOfBreeds != 0)
+			{
+				std::cout << "Predators breeding at " << *currentTile << '\n';
+
+				addAnimal(new Predator{ static_cast<bool>(functions::generateRandomNumber(0, 1)) });
+				--amountOfBreeds;
 			}
 		}
 	}
@@ -177,7 +230,6 @@ void Handler::moveAnimalsFromTileToAdjacent(Tile* tile)
 					currentX = tile->getXCoordinate();
 					currentY = tile->getYCoordinate();
 
-					//int isAnimalOnEdge{ isAnimalOnMapEdge(animal) };
 
 					switch (movementPossibility)
 					{

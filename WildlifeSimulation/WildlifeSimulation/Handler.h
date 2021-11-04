@@ -29,6 +29,7 @@ public:
 	void animalStateReset();
 	void movementPhase();
 	void huntingPhase();
+	void breedingPhase();
 
 	void moveAnimalsFromTileToAdjacent(Tile* tile);
 

@@ -125,7 +125,7 @@ void Tile::findPredatorAndEatHerbivore()
 {
 	for (int i{ 0 }; i < getAmountOfPredatorsOnTile(); ++i)
 	{
-		auto predatorFound{ std::find_if(m_animalsOnTile.begin(), m_animalsOnTile.end(), [](Animal* currentAnimal)
+		auto predatorFound{ std::find_if(m_animalsOnTile.begin() + i, m_animalsOnTile.end(), [](Animal* currentAnimal)
 			{
 				return currentAnimal->isPredator();
 			}) 
@@ -134,34 +134,35 @@ void Tile::findPredatorAndEatHerbivore()
 		if (predatorFound != m_animalsOnTile.end())
 		{
 			Predator* predator{ dynamic_cast<Predator*>(*predatorFound) };
-
-			if (!predator->hasEaten())
+			if (getAmountOfHerbivoresOnTile() > 0)
 			{
-				auto herbivoreFound{ std::find_if(m_animalsOnTile.begin(), m_animalsOnTile.end(), [](Animal* currentAnimal)
-					{
-						return !currentAnimal->isPredator();
-					})
-				};
-
-				Herbivore* herbivore{ dynamic_cast<Herbivore*>(*herbivoreFound) };
-
-				if (herbivoreFound != m_animalsOnTile.end())
+				if (!predator->hasEaten())
 				{
-					std::cout << *predator << " eats " << *herbivore << " on tile " << *this << ".\n";
+					auto herbivoreFound{ std::find_if(m_animalsOnTile.begin(), m_animalsOnTile.end(), [](Animal* currentAnimal)
+						{
+							return !currentAnimal->isPredator();
+						})
+					};
 
-					removeAnimal(herbivore);
-					delete herbivore;
+					Herbivore* herbivore{ dynamic_cast<Herbivore*>(*herbivoreFound) };
 
-					predator->setHasEaten(true);
-					predator->resetHunger();
+					if (herbivoreFound != m_animalsOnTile.end())
+					{
+						std::cout << *predator << " eats " << *herbivore << " on tile " << *this << ".\n";
 
-					--i;
+						removeAnimal(herbivore);
+						delete herbivore;
 
-					continue;
+						predator->setHasEaten(true);
+						predator->resetHunger();
+
+						//--i;
+
+						continue;
+					}
 				}
 			}
 
-			//NEVER REACHED - WHY?!
 			predator->increaseHunger();
 
 			if (predator->getTurnsTillStarvation() == 0)
@@ -171,7 +172,7 @@ void Tile::findPredatorAndEatHerbivore()
 				removeAnimal(predator);
 				delete predator;
 
-				--i;
+				//--i;
 			}
 		}
 	}
@@ -213,6 +214,40 @@ int Tile::getYCoordinate() const
 Animal* Tile::getAnimalOnIndex(int index) const
 {
 	return m_animalsOnTile[index];
+}
+
+int Tile::getAmountOfHerbivoreBreeds() const
+{
+	if (m_maleHerbivores > 0 && m_femaleHerbivores > 0)
+	{
+		if (m_maleHerbivores > m_femaleHerbivores)
+		{
+			return m_maleHerbivores - (m_maleHerbivores - m_femaleHerbivores);
+		}
+		else
+		{
+			return m_femaleHerbivores - (m_femaleHerbivores - m_maleHerbivores);
+		}
+	}
+
+	return 0;
+}
+
+int Tile::getAmountOfPredatorBreeds() const
+{
+	if (m_malePredators > 0 && m_femalePredators > 0)
+	{
+		if (m_malePredators > m_femalePredators)
+		{
+			return m_malePredators - (m_malePredators - m_femalePredators);
+		}
+		else
+		{
+			return m_femalePredators - (m_femalePredators - m_malePredators);
+		}
+	}
+
+	return 0;
 }
 
 std::ostream& operator<<(std::ostream& out, const Tile& tile)

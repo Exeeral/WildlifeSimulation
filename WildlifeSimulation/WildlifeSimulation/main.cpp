@@ -4,9 +4,9 @@
 
 int main()
 {
-	Handler* handler{ new Handler{10, 10, 50} };
+	Handler* handler{ new Handler{3, 3, 10} };
 
-	handler->populateWorld(2, 10);
+	handler->populateWorld(5, 3);
 
 	handler->startSimulation();
 
