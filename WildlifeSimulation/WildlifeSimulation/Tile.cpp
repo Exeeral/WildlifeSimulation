@@ -156,8 +156,6 @@ void Tile::findPredatorAndEatHerbivore()
 						predator->setHasEaten(true);
 						predator->resetHunger();
 
-						//--i;
-
 						continue;
 					}
 				}
@@ -172,7 +170,6 @@ void Tile::findPredatorAndEatHerbivore()
 				removeAnimal(predator);
 				delete predator;
 
-				//--i;
 			}
 		}
 	}

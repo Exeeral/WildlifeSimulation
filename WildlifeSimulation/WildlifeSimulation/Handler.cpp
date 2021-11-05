@@ -170,7 +170,6 @@ void Handler::huntingPhase()
 	}
 }
 
-//TODO
 void Handler::breedingPhase()
 {
 	int amountOfBreeds{};
