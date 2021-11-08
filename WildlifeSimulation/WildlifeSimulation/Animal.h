@@ -20,21 +20,23 @@ protected:
 	bool m_hasMoved{};
 
 	inline static int animalID{};
+	inline static int totalAmountOfPredators{};
+	inline static int totalAmountOfHerbivores{};
 
 public:
 
-	Animal(bool isMale);
-	virtual ~Animal() = default;
+	Animal(const bool isMale) noexcept;
+	virtual ~Animal() noexcept = default;
 
-	virtual bool isPredator() const = 0;
+	virtual const bool isPredator() const = 0;
 	void setCurrentTile(Tile* tile);
-	void setHasMoved(bool input);
+	void setHasMoved(const bool input);
 
 	bool isMale() const;
 	int getId() const;
 	bool hasMoved() const;
 
-	friend std::ostream& operator<<(std::ostream& out, Animal& animal);
+	friend std::ostream& operator<<(std::ostream& out, const Animal& animal);
 };
 
 #endif

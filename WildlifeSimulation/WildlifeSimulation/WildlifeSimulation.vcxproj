@@ -157,8 +157,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animal.cpp" />
-    <ClCompile Include="functions.cpp" />
-    <ClCompile Include="Handler.cpp" />
+    <ClCompile Include="UtilityFunctions.cpp" />
+    <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="Herbivore.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Predator.cpp" />
@@ -166,8 +166,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animal.h" />
-    <ClInclude Include="functions.h" />
-    <ClInclude Include="Handler.h" />
+    <ClInclude Include="UtilityFunctions.h" />
+    <ClInclude Include="Simulation.h" />
     <ClInclude Include="Herbivore.h" />
     <ClInclude Include="Predator.h" />
     <ClInclude Include="Tile.h" />

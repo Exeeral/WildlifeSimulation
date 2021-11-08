@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-#include "Animal.h"
+class Animal;
 
 class Tile
 {
@@ -27,10 +27,10 @@ private:
 
 public:
 
-	Tile(int x, int y);
+	Tile(int x, int y) noexcept;
 
 	void addAnimalToTile(Animal* animal);
-	bool areAnimalsOnTile() const;
+	const bool areAnimalsOnTile() const;
 	void removeAnimal(Animal* animal);
 	void resetAnimalsState();
 
@@ -43,7 +43,7 @@ public:
 	int getAmountOfHerbivoresOnTile() const;
 	int getXCoordinate() const;
 	int getYCoordinate() const;
-	Animal* getAnimalOnIndex(int index) const;
+	Animal* getAnimalOnIndex(const int index) const;
 
 	int getAmountOfHerbivoreBreeds() const;
 	int getAmountOfPredatorBreeds() const;

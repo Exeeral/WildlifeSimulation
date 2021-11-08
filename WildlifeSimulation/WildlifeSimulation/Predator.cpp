@@ -1,18 +1,18 @@
 #include "Predator.h"
 
-Predator::Predator(bool sex)
-	:Animal{ sex },
+Predator::Predator(const bool isMale) noexcept
+	:Animal{ isMale },
 	m_turnsTillStarvation{ maxHungerTillDeath }
 {
 	++totalAmountOfPredators;
 }
 
-Predator::~Predator()
+Predator::~Predator() noexcept
 {
 	--totalAmountOfPredators;
 }
 
-void Predator::setHasEaten(bool input)
+void Predator::setHasEaten(const bool input)
 {
 	m_hasEaten = input;
 }
@@ -27,17 +27,17 @@ void Predator::resetHunger()
 	m_turnsTillStarvation = maxHungerTillDeath;
 }
 
-bool Predator::isPredator() const
+const bool Predator::isPredator() const
 {
 	return true;
 }
 
-bool Predator::hasEaten() const
+const bool Predator::hasEaten() const
 {
 	return m_hasEaten;
 }
 
-int Predator::getTurnsTillStarvation() const
+const int Predator::getTurnsTillStarvation() const
 {
 	return m_turnsTillStarvation;
 }

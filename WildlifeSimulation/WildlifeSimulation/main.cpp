@@ -1,14 +1,14 @@
 #include <iostream>
 
-#include "Handler.h"
+#include "Simulation.h"
 
 int main()
 {
-	Handler* handler{ new Handler{3, 3, 10} };
+	Simulation* simulation{ new Simulation{4, 4, 20} };
 
-	handler->populateWorld(5, 3);
+	simulation->populateWorld(10, 3);
 
-	handler->startSimulation();
+	simulation->startSimulation();
 
 	return 0;
 }

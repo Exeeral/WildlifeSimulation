@@ -5,17 +5,13 @@
 
 class Herbivore : public Animal
 {
-private:
-
-	inline static int totalAmountOfHerbivores{};
-
 public:
 
-	Herbivore(bool sex);
-	~Herbivore() override;
+	Herbivore(const bool isMale) noexcept;
+	~Herbivore() noexcept override;
 
-	bool isPredator() const override;
-	inline static int getTotalAmountOfHerbivores()
+	const bool isPredator() const override;
+	inline static const int getTotalAmountOfHerbivores()
 	{
 		return totalAmountOfHerbivores;
 	}

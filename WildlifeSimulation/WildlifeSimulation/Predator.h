@@ -9,24 +9,23 @@ private:
 
 	int m_turnsTillStarvation{};
 	bool m_hasEaten{};
-	inline static int totalAmountOfPredators{};
 
 public:
 
-	inline static constexpr int maxHungerTillDeath{ 2 };
+	static constexpr int maxHungerTillDeath{ 2 };
 
-	Predator(bool sex);
-	~Predator() override;
+	Predator(const bool isMale) noexcept;
+	~Predator() noexcept override;
 
-	void setHasEaten(bool input);
+	void setHasEaten(const bool input);
 	void increaseHunger();
 	void resetHunger();
 
-	bool isPredator() const override;
-	bool hasEaten() const;
-	int getTurnsTillStarvation() const;
+	const bool isPredator() const override;
+	const bool hasEaten() const;
+	const int getTurnsTillStarvation() const;
 
-	inline static int getTotalAmountOfPredators()
+	inline static const int getTotalAmountOfPredators()
 	{
 		return totalAmountOfPredators;
 	}

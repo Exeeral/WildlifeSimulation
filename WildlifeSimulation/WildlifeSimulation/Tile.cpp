@@ -1,10 +1,11 @@
-#include "Tile.h"
-#include "functions.h"
-#include "Animal.h"
+#include "UtilityFunctions.h"
 #include "Predator.h"
 #include "Herbivore.h"
 
-Tile::Tile(int x, int y)
+class Animal;
+class Tile;
+
+Tile::Tile(int x, int y) noexcept
 	:m_xCoordinate{ x },
 	m_yCoordinate{ y }
 {
@@ -45,18 +46,13 @@ void Tile::addAnimalToTile(Animal* animal)
 	}
 	else
 	{
-		functions::printNullptrError();
+		UtilityFunctions::printNullptrError();
 	}
 }
 
-bool Tile::areAnimalsOnTile() const
+const bool Tile::areAnimalsOnTile() const
 {
-	if (m_animalsOnTile.size() > 0)
-	{
-		return true;
-	}
-
-	return false;
+	return m_animalsOnTile.size();
 }
 
 void Tile::removeAnimal(Animal* animal)
@@ -94,7 +90,7 @@ void Tile::removeAnimal(Animal* animal)
 				}
 			}
 
-			dynamic_cast<Animal*>(*animalFound)->setCurrentTile(nullptr);
+			static_cast<Animal*>(*animalFound)->setCurrentTile(nullptr);
 			m_animalsOnTile.erase(animalFound);
 		}
 		else
@@ -104,7 +100,7 @@ void Tile::removeAnimal(Animal* animal)
 	}
 	else
 	{
-		functions::printNullptrError();
+		UtilityFunctions::printNullptrError();
 	}
 }
 
@@ -208,7 +204,7 @@ int Tile::getYCoordinate() const
 	return m_yCoordinate;
 }
 
-Animal* Tile::getAnimalOnIndex(int index) const
+Animal* Tile::getAnimalOnIndex(const int index) const
 {
 	return m_animalsOnTile[index];
 }

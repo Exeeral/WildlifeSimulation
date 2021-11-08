@@ -1,17 +1,17 @@
 #include "Herbivore.h"
 
-Herbivore::Herbivore(bool sex)
-	:Animal{ sex }
+Herbivore::Herbivore(const bool isMale) noexcept
+	:Animal{ isMale }
 {
 	++totalAmountOfHerbivores;
 }
 
-Herbivore::~Herbivore()
+Herbivore::~Herbivore() noexcept
 {
 	--totalAmountOfHerbivores;
 }
 
-bool Herbivore::isPredator() const
+const bool Herbivore::isPredator() const
 {
 	return false;
 }

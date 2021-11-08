@@ -1,7 +1,7 @@
 #include "Animal.h"
-#include "functions.h"
+#include "UtilityFunctions.h"
 
-Animal::Animal(bool isMale)
+Animal::Animal(const bool isMale) noexcept
 	:m_isMale{ isMale },
 	m_id{ animalID },
 	m_hasMoved{ false }
@@ -14,7 +14,7 @@ void Animal::setCurrentTile(Tile* tile)
 	m_currentTile = tile;
 }
 
-void Animal::setHasMoved(bool input)
+void Animal::setHasMoved(const bool input)
 {
 	m_hasMoved = input;
 }
@@ -34,7 +34,7 @@ bool Animal::hasMoved() const
 	return m_hasMoved;
 }
 
-std::ostream& operator<<(std::ostream& out, Animal& animal)
+std::ostream& operator<<(std::ostream& out, const Animal& animal)
 {
 	if (animal.isPredator())
 	{
