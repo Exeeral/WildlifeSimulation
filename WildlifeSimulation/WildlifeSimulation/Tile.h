@@ -24,7 +24,6 @@ private:
 	int m_maleHerbivores{};
 	int m_femaleHerbivores{};
 
-
 public:
 
 	Tile(int x, int y) noexcept;

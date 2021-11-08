@@ -1,4 +1,8 @@
-﻿  Herbivore.cpp
+﻿  Animal.cpp
+  Herbivore.cpp
   Predator.cpp
+  Simulation.cpp
+  Tile.cpp
+  main.cpp
   Generating Code...
   WildlifeSimulation.vcxproj -> I:\Desktop\Things\Works\Wildlife Simulation Project\WildlifeSimulation\Debug\WildlifeSimulation.exe
