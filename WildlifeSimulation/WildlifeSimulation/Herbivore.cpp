@@ -11,7 +11,7 @@ Herbivore::~Herbivore() noexcept
 	--totalAmountOfHerbivores;
 }
 
-const bool Herbivore::isPredator() const
+bool Herbivore::isPredator() const
 {
 	return false;
 }

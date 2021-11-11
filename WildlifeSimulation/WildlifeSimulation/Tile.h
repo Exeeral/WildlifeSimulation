@@ -30,7 +30,7 @@ public:
 	Tile(int x, int y) noexcept;
 
 	void addAnimalToTile(Animal* animal);
-	const bool areAnimalsOnTile() const;
+	bool areAnimalsOnTile() const;
 	void removeAnimal(Animal* animal);
 	void resetAnimalsState();
 

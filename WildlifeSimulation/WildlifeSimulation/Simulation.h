@@ -23,7 +23,7 @@ public:
 	void addAnimal(Animal* animal);
 
 	void printAllAnimalsInfo() const;
-	Tile* getTileByCoordinates(const int x, const int y) const;
+	[[nodiscard]] Tile* getTileByCoordinates(const int x, const int y) const;
 
 	void startSimulation();
 

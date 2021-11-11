@@ -66,7 +66,7 @@ void Simulation::printAllAnimalsInfo() const
 	}
 }
 
-Tile* Simulation::getTileByCoordinates(const int x, const int y) const
+[[nodiscard]] Tile* Simulation::getTileByCoordinates(const int x, const int y) const
 {
 	auto found{ std::find_if(m_tiles.begin(), m_tiles.end(), [x, y](const Tile* currentTile)
 		{

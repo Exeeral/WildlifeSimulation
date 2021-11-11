@@ -29,7 +29,7 @@ public:
 	Animal(const bool isMale) noexcept;
 	virtual ~Animal() noexcept = default;
 
-	virtual const bool isPredator() const = 0;
+	virtual bool isPredator() const = 0;
 	void setCurrentTile(Tile* tile);
 	void setHasMoved(const bool input);
 
@@ -38,12 +38,12 @@ public:
 	bool hasMoved() const;
 
 
-	static const int getTotalAmountOfPredators()
+	static int getTotalAmountOfPredators()
 	{
 		return totalAmountOfPredators;
 	}
 
-	static const int getTotalAmountOfHerbivores()
+	static int getTotalAmountOfHerbivores()
 	{
 		return totalAmountOfHerbivores;
 	}

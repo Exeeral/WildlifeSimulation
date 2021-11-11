@@ -21,9 +21,9 @@ public:
 	void increaseHunger();
 	void resetHunger();
 
-	const bool isPredator() const override;
-	const bool hasEaten() const;
-	const int getTurnsTillStarvation() const;
+	bool isPredator() const override;
+	bool hasEaten() const;
+	int getTurnsTillStarvation() const;
 };
 
 #endif

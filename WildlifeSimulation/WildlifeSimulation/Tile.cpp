@@ -50,7 +50,7 @@ void Tile::addAnimalToTile(Animal* animal)
 	}
 }
 
-const bool Tile::areAnimalsOnTile() const
+bool Tile::areAnimalsOnTile() const
 {
 	return m_animalsOnTile.size();
 }

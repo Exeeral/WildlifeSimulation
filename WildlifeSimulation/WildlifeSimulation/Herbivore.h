@@ -10,7 +10,7 @@ public:
 	Herbivore(const bool isMale) noexcept;
 	~Herbivore() noexcept override;
 
-	const bool isPredator() const override;
+	bool isPredator() const override;
 };
 
 #endif

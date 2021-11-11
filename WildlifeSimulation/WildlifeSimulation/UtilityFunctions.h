@@ -1,5 +1,5 @@
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+#ifndef UTILITYFUNCTIONS_H
+#define UTILITYFUNCTIONS_H
 
 namespace UtilityFunctions
 {

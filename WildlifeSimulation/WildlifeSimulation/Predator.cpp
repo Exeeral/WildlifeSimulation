@@ -27,17 +27,17 @@ void Predator::resetHunger()
 	m_turnsTillStarvation = maxHungerTillDeath;
 }
 
-const bool Predator::isPredator() const
+bool Predator::isPredator() const
 {
 	return true;
 }
 
-const bool Predator::hasEaten() const
+bool Predator::hasEaten() const
 {
 	return m_hasEaten;
 }
 
-const int Predator::getTurnsTillStarvation() const
+int Predator::getTurnsTillStarvation() const
 {
 	return m_turnsTillStarvation;
 }
