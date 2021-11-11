@@ -12,6 +12,7 @@ private:
 	int m_worldWidth{};
 	int m_worldHeight{};
 	int m_maxAmountOfTurns{};
+
 	std::vector<Tile*> m_tiles{};
 
 

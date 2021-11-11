@@ -24,11 +24,6 @@ public:
 	const bool isPredator() const override;
 	const bool hasEaten() const;
 	const int getTurnsTillStarvation() const;
-
-	inline static const int getTotalAmountOfPredators()
-	{
-		return totalAmountOfPredators;
-	}
 };
 
 #endif

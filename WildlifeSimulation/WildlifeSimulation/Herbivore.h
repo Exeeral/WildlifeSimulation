@@ -11,10 +11,6 @@ public:
 	~Herbivore() noexcept override;
 
 	const bool isPredator() const override;
-	inline static const int getTotalAmountOfHerbivores()
-	{
-		return totalAmountOfHerbivores;
-	}
 };
 
 #endif

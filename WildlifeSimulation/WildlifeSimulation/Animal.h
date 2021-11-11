@@ -14,10 +14,11 @@ public:
 
 protected:
 
-	Tile* m_currentTile{};
-	bool m_isMale{};
 	int m_id{};
+	bool m_isMale{};
 	bool m_hasMoved{};
+
+	Tile* m_currentTile{};
 
 	inline static int animalID{};
 	inline static int totalAmountOfPredators{};
@@ -35,6 +36,17 @@ public:
 	bool isMale() const;
 	int getId() const;
 	bool hasMoved() const;
+
+
+	static const int getTotalAmountOfPredators()
+	{
+		return totalAmountOfPredators;
+	}
+
+	static const int getTotalAmountOfHerbivores()
+	{
+		return totalAmountOfHerbivores;
+	}
 
 	friend std::ostream& operator<<(std::ostream& out, const Animal& animal);
 };

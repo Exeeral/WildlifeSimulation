@@ -16,13 +16,14 @@ private:
 
 	int m_xCoordinate{};
 	int m_yCoordinate{};
-	std::vector<Animal*> m_animalsOnTile{};
 
 	int m_malePredators{};
 	int m_femalePredators{};
 
 	int m_maleHerbivores{};
 	int m_femaleHerbivores{};
+	
+	std::vector<Animal*> m_animalsOnTile{};
 
 public:
 

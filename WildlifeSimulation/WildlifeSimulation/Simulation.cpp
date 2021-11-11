@@ -94,8 +94,8 @@ void Simulation::startSimulation()
 	{
 		std::cout << "\tTURN: " << currentTurn << '\n';
 
-		std::cout << "\tALL HERBIVORES: " << Herbivore::getTotalAmountOfHerbivores() << '\n';
-		std::cout << "\tALL PREDATORS: " << Predator::getTotalAmountOfPredators() << '\n';
+		std::cout << "\tALL HERBIVORES: " << Animal::getTotalAmountOfHerbivores() << '\n';
+		std::cout << "\tALL PREDATORS: " << Animal::getTotalAmountOfPredators() << '\n';
 
 		std::cout << "\n\t---Resetting all animals---\n";
 		animalStateReset();
@@ -106,14 +106,14 @@ void Simulation::startSimulation()
 		std::cout << "\n\t---Breeding Phase---\n";
 		breedingPhase();
 
-		if (Herbivore::getTotalAmountOfHerbivores() == 0)
+		if (Animal::getTotalAmountOfHerbivores() == 0)
 		{
 			std::cout << "\n\t------<THE END>------\n\n";
 			std::cout << "\tAll herbivores have died out!\n\n";
 			std::cout << "\t------<THE END>------\n";
 			return;
 		}
-		else if (Predator::getTotalAmountOfPredators() == 0)
+		else if (Animal::getTotalAmountOfPredators() == 0)
 		{
 			std::cout << "\n\t------<THE END>------\n\n";
 			std::cout << "\tAll predators have died out!\n\n";
@@ -124,8 +124,8 @@ void Simulation::startSimulation()
 		std::cout << "\n\t_--===TURN " << currentTurn << " END RESULTS===--_\n";
 		printAllAnimalsInfo();
 
-		std::cout << "\n\tALL HERBIVORES: " << Herbivore::getTotalAmountOfHerbivores() << '\n';
-		std::cout << "\n\tALL PREDATORS: " << Predator::getTotalAmountOfPredators() << '\n';
+		std::cout << "\n\tALL HERBIVORES: " << Animal::getTotalAmountOfHerbivores() << '\n';
+		std::cout << "\n\tALL PREDATORS: " << Animal::getTotalAmountOfPredators() << '\n';
 
 		std::cout << "\t_--===TURN " << currentTurn << " END RESULTS===--_\n";
 
