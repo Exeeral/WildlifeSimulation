@@ -3,18 +3,18 @@
 
 #include <vector>
 
-#include "Tile.h"
+class Tile;
+class Animal;
 
 class Simulation
 {
 private:
 
+	std::vector<Tile*> m_tiles{};
+
 	int m_worldWidth{};
 	int m_worldHeight{};
 	int m_maxAmountOfTurns{};
-
-	std::vector<Tile*> m_tiles{};
-
 
 public:
 	Simulation(const int worldWidth, const int worldHeight, const int maxTurns) noexcept;

@@ -36,23 +36,8 @@ bool Animal::hasMoved() const
 
 std::ostream& operator<<(std::ostream& out, const Animal& animal)
 {
-	if (animal.isPredator())
-	{
-		out << "Predator, ";
-	}
-	else
-	{
-		out << "Herbivore, ";
-	}
-
-	if (animal.isMale())
-	{
-		out << "male";
-	}
-	else
-	{
-		out << "female";
-	}
+	out << (animal.isPredator() ? "Predator, " : "Herbivore, ");
+	out << (animal.isMale() ? "male" : "female");
 
 	out << " (ID: " << animal.m_id << ")";
 

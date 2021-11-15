@@ -14,40 +14,27 @@ Tile::Tile(int x, int y) noexcept
 
 void Tile::addAnimalToTile(Animal* animal)
 {
-	if (animal)
+	if (!animal)
 	{
-		m_animalsOnTile.push_back(animal);
-		animal->setCurrentTile(this);
+		UtilityFunctions::printNullptrError();
 
-		if (animal->isPredator())
-		{
-			if (animal->isMale())
-			{
-				++m_malePredators;
-			}
-			else
-			{
-				++m_femalePredators;
-			}
-		}
-		else
-		{
-			if (animal->isMale())
-			{
-				++m_maleHerbivores;
-			}
-			else
-			{
-				++m_femaleHerbivores;
-			}
-		}
+	}
 
-		std::cout << "New " << *animal << " arrived on " << *this << '\n';
+	m_animalsOnTile.push_back(animal);
+	animal->setCurrentTile(this);
+
+	if (animal->isPredator())
+	{
+		animal->isMale() ? ++m_malePredators : ++m_femalePredators;
+
 	}
 	else
 	{
-		UtilityFunctions::printNullptrError();
+		animal->isMale() ? ++m_maleHerbivores : ++m_femaleHerbivores;
+
 	}
+
+	std::cout << "New " << *animal << " arrived on " << *this << '\n';
 }
 
 bool Tile::areAnimalsOnTile() const
@@ -57,50 +44,35 @@ bool Tile::areAnimalsOnTile() const
 
 void Tile::removeAnimal(Animal* animal)
 {
-	if (animal)
+	if (!animal)
 	{
-		auto animalFound{ std::find_if(m_animalsOnTile.begin(), m_animalsOnTile.end(), [&animal](const Animal* currentAnimal)
-			{
-				return animal->getId() == currentAnimal->getId();
-			})
-		};
+		UtilityFunctions::printNullptrError();
+		return;
+	}
 
-		if (animalFound != m_animalsOnTile.end())
+	auto animalFound{ std::find_if(m_animalsOnTile.begin(), m_animalsOnTile.end(), [&animal](const Animal* currentAnimal)
+	{
+		return animal->getId() == currentAnimal->getId();
+	})
+	};
+
+	if (animalFound != m_animalsOnTile.end())
+	{
+		if (animal->isPredator())
 		{
-			if (animal->isPredator())
-			{
-				if (animal->isMale())
-				{
-					--m_malePredators;
-				}
-				else
-				{
-					--m_femalePredators;
-				}
-			}
-			else
-			{
-				if (animal->isMale())
-				{
-					--m_maleHerbivores;
-				}
-				else
-				{
-					--m_femaleHerbivores;
-				}
-			}
-
-			static_cast<Animal*>(*animalFound)->setCurrentTile(nullptr);
-			m_animalsOnTile.erase(animalFound);
+			animal->isMale() ? --m_malePredators : --m_femalePredators;
 		}
 		else
 		{
-			std::cout << "Tile::removeAnimal ERROR: animal not found!\n";
+			animal->isMale() ? --m_maleHerbivores : --m_femaleHerbivores;
 		}
+
+		static_cast<Animal*>(*animalFound)->setCurrentTile(nullptr);
+		m_animalsOnTile.erase(animalFound);
 	}
 	else
 	{
-		UtilityFunctions::printNullptrError();
+		std::cout << "Tile::removeAnimal ERROR: animal not found!\n";
 	}
 }
 
@@ -130,6 +102,7 @@ void Tile::findPredatorAndEatHerbivore()
 		if (predatorFound != m_animalsOnTile.end())
 		{
 			Predator* predator{ dynamic_cast<Predator*>(*predatorFound) };
+
 			if (getAmountOfHerbivoresOnTile() > 0)
 			{
 				if (!predator->hasEaten())

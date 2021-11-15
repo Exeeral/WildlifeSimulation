@@ -14,6 +14,8 @@ public:
 
 private:
 
+	std::vector<Animal*> m_animalsOnTile{};
+
 	int m_xCoordinate{};
 	int m_yCoordinate{};
 
@@ -22,8 +24,6 @@ private:
 
 	int m_maleHerbivores{};
 	int m_femaleHerbivores{};
-	
-	std::vector<Animal*> m_animalsOnTile{};
 
 public:
 

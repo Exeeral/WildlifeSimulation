@@ -43,16 +43,16 @@ void Simulation::populateWorld(int herbivores, const int predators)
 
 void Simulation::addAnimal(Animal* animal)
 {
-	if (animal)
-	{
-		int randomTile{ UtilityFunctions::generateRandomNumber(0, m_tiles.size() - 1) };
-
-		m_tiles[randomTile]->addAnimalToTile(animal);
-	}
-	else
+	if (!animal)
 	{
 		UtilityFunctions::printNullptrError();
+
+		return;
 	}
+
+	int randomTile{ UtilityFunctions::generateRandomNumber(0, m_tiles.size() - 1) };
+
+	m_tiles[randomTile]->addAnimalToTile(animal);
 }
 
 void Simulation::printAllAnimalsInfo() const
