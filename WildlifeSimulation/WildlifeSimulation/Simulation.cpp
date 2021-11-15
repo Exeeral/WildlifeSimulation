@@ -41,7 +41,7 @@ void Simulation::populateWorld(int herbivores, const int predators)
 
 void Simulation::addAnimal(Animal* animal)
 {
-	if (!animal)
+	if (!animal) [[unlikely]]
 	{
 		UtilityFunctions::printNullptrError();
 
@@ -72,7 +72,7 @@ void Simulation::printAllAnimalsInfo() const
 		}
 	) };
 
-	if (found != m_tiles.end())
+	if (found != m_tiles.end()) [[likely]]
 	{
 		return *found;
 	}
@@ -202,7 +202,7 @@ void Simulation::breedingPhase()
 
 void Simulation::moveAnimalsFromTileToAdjacent(Tile* tile)
 {
-	if (!tile)
+	if (!tile) [[unlikely]]
 	{
 		UtilityFunctions::printNullptrError();
 
@@ -222,7 +222,7 @@ void Simulation::moveAnimalsFromTileToAdjacent(Tile* tile)
 	{
 		currentAnimal = tile->getAnimalOnIndex(counter);
 
-		if (!currentAnimal)
+		if (!currentAnimal) [[unlikely]]
 		{
 			UtilityFunctions::printNullptrError();
 
@@ -293,7 +293,7 @@ void Simulation::moveAnimalsFromTileToAdjacent(Tile* tile)
 
 				break;
 
-			default:
+			[[unlikely]] default:
 				std::cout << "Handler::moveAnimalToRandomAdjacentTile ERROR: Unspecified case!\n";
 				return;
 			}

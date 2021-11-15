@@ -12,7 +12,7 @@ Tile::Tile(int x, int y) noexcept
 
 void Tile::addAnimalToTile(Animal* animal)
 {
-	if (!animal)
+	if (!animal) [[unlikely]]
 	{
 		UtilityFunctions::printNullptrError();
 
@@ -43,7 +43,7 @@ bool Tile::areAnimalsOnTile() const
 
 void Tile::removeAnimal(Animal* animal)
 {
-	if (!animal)
+	if (!animal) [[unlikely]]
 	{
 		UtilityFunctions::printNullptrError();
 		return;
@@ -98,7 +98,7 @@ void Tile::findPredatorAndEatHerbivore()
 			}) 
 		};
 
-		if (predatorFound != m_animalsOnTile.end())
+		if (predatorFound != m_animalsOnTile.end()) [[likely]]
 		{
 			Predator* predator{ dynamic_cast<Predator*>(*predatorFound) };
 
@@ -114,7 +114,7 @@ void Tile::findPredatorAndEatHerbivore()
 
 					Herbivore* herbivore{ dynamic_cast<Herbivore*>(*herbivoreFound) };
 
-					if (herbivoreFound != m_animalsOnTile.end())
+					if (herbivoreFound != m_animalsOnTile.end()) [[likely]]
 					{
 						std::cout << *predator << " eats " << *herbivore << " on " << *this << ".\n";
 
