@@ -1,12 +1,9 @@
-#include <iostream>
 #include <algorithm>
 
 #include "Simulation.h"
 #include "Herbivore.h"
 #include "Predator.h"
 #include "UtilityFunctions.h"
-
-class Animal;
 
 Simulation::Simulation(const int worldWidth, const int worldHeight, const int maxTurns) noexcept
 	:m_worldWidth{ worldWidth },
@@ -204,135 +201,135 @@ void Simulation::breedingPhase()
 
 void Simulation::moveAnimalsFromTileToAdjacent(Tile* tile)
 {
-	if (tile)
-	{
-		int movementPossibility{};
-		int movementDirectionality{};
-
-		int currentX{};
-		int currentY{};
-
-		Animal* currentAnimal{ nullptr };
-		Tile* targetTile{ nullptr };
-
-		for (int counter{}; counter < tile->getAmountOfAnimalsOnTile(); ++counter)
-		{
-			currentAnimal = tile->getAnimalOnIndex(counter);
-
-			if (currentAnimal)
-			{
-				if (!currentAnimal->hasMoved())
-				{
-
-					movementPossibility = UtilityFunctions::generateRandomNumber(0, 3);
-					movementDirectionality = UtilityFunctions::generateRandomNumber(0, 1);
-
-					currentX = tile->getXCoordinate();
-					currentY = tile->getYCoordinate();
-
-
-					switch (movementPossibility)
-					{
-					case 0:
-						if (movementDirectionality == 0)
-						{
-							currentX += 1;
-						}
-						else
-						{
-							currentX -= 1;
-						}
-
-						break;
-
-					case 1:
-						if (movementDirectionality == 0)
-						{
-							currentY += 1;
-						}
-						else
-						{
-							currentY -= 1;
-						}
-
-						break;
-
-					case 2:
-						if (movementDirectionality == 0)
-						{
-							currentX += 1;
-							currentY += 1;
-						}
-						else
-						{
-							currentX -= 1;
-							currentY -= 1;
-						}
-
-						break;
-
-					case 3:
-						if (movementDirectionality == 0)
-						{
-							currentX -= 1;
-							currentY += 1;
-						}
-						else
-						{
-							currentX += 1;
-							currentY -= 1;
-						}
-
-						break;
-
-					default:
-						std::cout << "Handler::moveAnimalToRandomAdjacentTile ERROR: Unspecified case!\n";
-						return;
-					}
-
-					//if animal is on map's edge and wants to move to non-existing tile,
-					//wrap his location around the map
-					if (currentX > m_worldWidth)
-					{
-						currentX = 0;
-					}
-					else if (currentX < 0)
-					{
-						currentX = m_worldWidth;
-					}
-
-					if (currentY > m_worldHeight)
-					{
-						currentY = 0;
-					}
-					else if (currentY < 0)
-					{
-						currentY = m_worldHeight;
-					}
-
-					targetTile = getTileByCoordinates(currentX, currentY);
-
-					currentAnimal->setCurrentTile(targetTile);
-					targetTile->addAnimalToTile(currentAnimal);
-
-					tile->removeAnimal(currentAnimal);
-
-					std::cout << *currentAnimal << " moved from " << *tile
-						<< " to " << *targetTile << ".\n\n";
-
-					currentAnimal->setHasMoved(true);
-
-					--counter;
-				}
-			}
-			else
-			{
-				UtilityFunctions::printNullptrError();
-			}
-		}
-	}
-	else
+	if (!tile)
 	{
 		UtilityFunctions::printNullptrError();
+
+		return;
+	}
+
+	int movementPossibility{};
+	int movementDirectionality{};
+
+	int currentX{};
+	int currentY{};
+
+	Animal* currentAnimal{ nullptr };
+	Tile* targetTile{ nullptr };
+
+	for (int counter{}; counter < tile->getAmountOfAnimalsOnTile(); ++counter)
+	{
+		currentAnimal = tile->getAnimalOnIndex(counter);
+
+		if (!currentAnimal)
+		{
+			UtilityFunctions::printNullptrError();
+
+			continue;
+		}
+
+		if (!currentAnimal->hasMoved())
+		{
+
+			movementPossibility = UtilityFunctions::generateRandomNumber(0, 3);
+			movementDirectionality = UtilityFunctions::generateRandomNumber(0, 1);
+
+			currentX = tile->getXCoordinate();
+			currentY = tile->getYCoordinate();
+
+
+			switch (movementPossibility)
+			{
+			case 0:
+				if (movementDirectionality == 0)
+				{
+					currentX += 1;
+				}
+				else
+				{
+					currentX -= 1;
+				}
+
+				break;
+
+			case 1:
+				if (movementDirectionality == 0)
+				{
+					currentY += 1;
+				}
+				else
+				{
+					currentY -= 1;
+				}
+
+				break;
+
+			case 2:
+				if (movementDirectionality == 0)
+				{
+					currentX += 1;
+					currentY += 1;
+				}
+				else
+				{
+					currentX -= 1;
+					currentY -= 1;
+				}
+
+				break;
+
+			case 3:
+				if (movementDirectionality == 0)
+				{
+					currentX -= 1;
+					currentY += 1;
+				}
+				else
+				{
+					currentX += 1;
+					currentY -= 1;
+				}
+
+				break;
+
+			default:
+				std::cout << "Handler::moveAnimalToRandomAdjacentTile ERROR: Unspecified case!\n";
+				return;
+			}
+
+			//if animal is on map's edge and wants to move to non-existing tile,
+			//wrap his location around the map
+			if (currentX > m_worldWidth)
+			{
+				currentX = 0;
+			}
+			else if (currentX < 0)
+			{
+				currentX = m_worldWidth;
+			}
+
+			if (currentY > m_worldHeight)
+			{
+				currentY = 0;
+			}
+			else if (currentY < 0)
+			{
+				currentY = m_worldHeight;
+			}
+
+			targetTile = getTileByCoordinates(currentX, currentY);
+
+			currentAnimal->setCurrentTile(targetTile);
+			targetTile->addAnimalToTile(currentAnimal);
+
+			tile->removeAnimal(currentAnimal);
+
+			std::cout << *currentAnimal << " moved from " << *tile
+				<< " to " << *targetTile << ".\n\n";
+
+			currentAnimal->setHasMoved(true);
+
+			--counter;
+		}
 	}
 }

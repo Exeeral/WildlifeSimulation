@@ -27,7 +27,7 @@ protected:
 public:
 
 	Animal(const bool isMale) noexcept;
-	virtual ~Animal() noexcept = default;
+	~Animal() noexcept = default;
 
 	virtual bool isPredator() const = 0;
 	void setCurrentTile(Tile* tile);

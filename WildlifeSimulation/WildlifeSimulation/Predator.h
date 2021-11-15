@@ -15,7 +15,7 @@ public:
 	static constexpr int maxHungerTillDeath{ 2 };
 
 	Predator(const bool isMale) noexcept;
-	~Predator() noexcept override;
+	~Predator() noexcept;
 
 	void setHasEaten(const bool input);
 	void increaseHunger();

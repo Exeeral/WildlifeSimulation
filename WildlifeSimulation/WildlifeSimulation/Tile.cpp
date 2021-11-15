@@ -2,7 +2,6 @@
 #include "Predator.h"
 #include "Herbivore.h"
 
-class Animal;
 class Tile;
 
 Tile::Tile(int x, int y) noexcept
@@ -18,6 +17,7 @@ void Tile::addAnimalToTile(Animal* animal)
 	{
 		UtilityFunctions::printNullptrError();
 
+		return;
 	}
 
 	m_animalsOnTile.push_back(animal);
@@ -117,7 +117,7 @@ void Tile::findPredatorAndEatHerbivore()
 
 					if (herbivoreFound != m_animalsOnTile.end())
 					{
-						std::cout << *predator << " eats " << *herbivore << " on tile " << *this << ".\n";
+						std::cout << *predator << " eats " << *herbivore << " on " << *this << ".\n";
 
 						removeAnimal(herbivore);
 						delete herbivore;
