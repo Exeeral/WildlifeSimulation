@@ -3,6 +3,7 @@
 #include "Simulation.h"
 #include "Herbivore.h"
 #include "Predator.h"
+#include "Tile.h"
 #include "UtilityFunctions.h"
 
 Simulation::Simulation(const int worldWidth, const int worldHeight, const int maxTurns) noexcept

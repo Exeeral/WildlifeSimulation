@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "Tile.h"
+class Tile;
 
 class Animal
 {

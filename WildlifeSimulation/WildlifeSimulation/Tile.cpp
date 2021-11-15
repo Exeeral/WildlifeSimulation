@@ -1,8 +1,7 @@
+#include "Tile.h"
 #include "UtilityFunctions.h"
 #include "Predator.h"
 #include "Herbivore.h"
-
-class Tile;
 
 Tile::Tile(int x, int y) noexcept
 	:m_xCoordinate{ x },
